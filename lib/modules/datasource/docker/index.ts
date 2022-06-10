@@ -892,6 +892,7 @@ export class DockerDatasource extends Datasource {
   async getReleases({
     packageName,
     registryUrl,
+    imageSource,
   }: GetReleasesConfig): Promise<ReleaseResult | null> {
     const { registryHost, dockerRepository } = getRegistryRepository(
       packageName,
@@ -916,16 +917,20 @@ export class DockerDatasource extends Datasource {
     if (!latestTag) {
       return ret;
     }
-    const labels = await this.getLabels(
-      registryHost,
-      dockerRepository,
-      latestTag
-    );
-    if (labels) {
-      for (const label of sourceLabels) {
-        if (is.nonEmptyString(labels[label])) {
-          ret.sourceUrl = labels[label];
-          break;
+    if (is.nonEmptyString(imageSource)) {
+      ret.sourceUrl = imageSource;
+    } else {
+      const labels = await this.getLabels(
+        registryHost,
+        dockerRepository,
+        latestTag
+      );
+      if (labels) {
+        for (const label of sourceLabels) {
+          if (is.nonEmptyString(labels[label])) {
+            ret.sourceUrl = labels[label];
+            break;
+          }
         }
       }
     }

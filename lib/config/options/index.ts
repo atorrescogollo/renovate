@@ -837,6 +837,13 @@ const options: RenovateOptions[] = [
     env: false,
   },
   {
+    name: 'imageSource',
+    description: 'Value for `org.opencontainers.image.source` docker label.',
+    type: 'string',
+    cli: false,
+    env: false,
+  },
+  {
     name: 'versioning',
     description: 'Versioning to use for filtering and comparisons.',
     type: 'string',
@@ -2228,6 +2235,15 @@ const options: RenovateOptions[] = [
     name: 'autoReplaceStringTemplate',
     description:
       'Optional `extractVersion` for extracted dependencies. Valid only within a `regexManagers` object.',
+    type: 'string',
+    parent: 'regexManagers',
+    cli: false,
+    env: false,
+  },
+  {
+    name: 'imageSourceTemplate',
+    description:
+      'Optional `imageSource` for explicitly setting `org.opencontainers.image.source` docker label. Valid only within a `regexManagers` object.',
     type: 'string',
     parent: 'regexManagers',
     cli: false,

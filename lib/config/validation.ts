@@ -357,6 +357,7 @@ export async function validateConfig(
                   const preLookupOptions = [
                     'allowedVersions',
                     'extractVersion',
+                    'imageSource',
                     'followTag',
                     'ignoreDeps',
                     'ignoreUnstable',
@@ -404,6 +405,7 @@ export async function validateConfig(
                 'currentValueTemplate',
                 'extractVersionTemplate',
                 'autoReplaceStringTemplate',
+                'imageSourceTemplate',
                 'depTypeTemplate',
               ];
               // TODO: fix types #7154

@@ -21,6 +21,7 @@ export interface DigestConfig {
 export interface GetReleasesConfig {
   packageName: string;
   registryUrl?: string;
+  imageSource?: string;
 }
 
 export interface GetPkgReleasesConfig {
@@ -33,6 +34,7 @@ export interface GetPkgReleasesConfig {
   packageName?: string;
   versioning?: string;
   extractVersion?: string;
+  imageSource?: string;
   constraints?: Record<string, string>;
   replacementName?: string;
   replacementVersion?: string;
